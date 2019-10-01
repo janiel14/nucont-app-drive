@@ -1,6 +1,3 @@
-const sqlanywhere = require("./lib/sqlanywhere")();
-const sybase = require("./lib/nodeSybaseNu")();
-
 const validate = () => {
     const driver = document.getElementById("driver").value,
         hostname = document.getElementById("hostname").value,
@@ -39,39 +36,52 @@ const validate = () => {
 };
 
 const testDriver = () => {
-    const driver = document.getElementById("driver").value,
-        hostname = document.getElementById("hostname").value,
-        port = document.getElementById("port").value,
-        database = document.getElementById("database").value,
-        username = document.getElementById("username").value,
-        password = document.getElementById("password").value,
-        display = document.getElementById("display");
+    try {
+        const driver = document.getElementById("driver").value,
+            hostname = document.getElementById("hostname").value,
+            port = document.getElementById("port").value,
+            database = document.getElementById("database").value,
+            username = document.getElementById("username").value,
+            password = document.getElementById("password").value,
+            display = document.getElementById("display");
 
-    if (!validate()) {
-        return null;
-    }
+        if (!validate()) {
+            return null;
+        }
 
-    let conn = null;
+        let conn = null;
 
-    if (driver == 1) {
-        sqlanywhere.setParams(hostname, username, password, port, "utf-8");
-        conn = sqlanywhere;
-    } else {
-        sybase.setParams(hostname, username, password, database, port, "utf-8");
-        conn = sybase;
-    }
+        if (driver == 1) {
+            const sqlanywhere = require("./lib/sqlanywhere")();
+            sqlanywhere.setParams(hostname, username, password, port, "utf-8");
+            conn = sqlanywhere;
+        } else {
+            const sybase = require("./lib/nodeSybaseNu")();
+            sybase.setParams(
+                hostname,
+                username,
+                password,
+                database,
+                port,
+                "utf-8"
+            );
+            conn = sybase;
+        }
 
-    if (conn) {
-        display.innerHTML = "awaiting...";
-        conn.query(
-            "SELECT TOP 1 START AT 1 ramo_emp, razao_emp, nome_emp FROM bethadba.geempre"
-        )
-            .then((result) => {
-                display.innerHTML = JSON.stringify(result);
-            })
-            .catch((error) => {
-                display.innerHTML = error;
-            });
+        if (conn) {
+            display.innerHTML = "awaiting...";
+            conn.query(
+                "SELECT TOP 1 START AT 1 ramo_emp, razao_emp, nome_emp FROM bethadba.geempre"
+            )
+                .then((result) => {
+                    display.innerHTML = JSON.stringify(result);
+                })
+                .catch((error) => {
+                    display.innerHTML = error;
+                });
+        }
+    } catch (error) {
+        document.getElementById("display").innerHTML = error;
     }
 };
 window._testDriver = testDriver;
