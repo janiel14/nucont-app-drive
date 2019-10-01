@@ -1,0 +1,58 @@
+{
+    "name": "nucont-app-drive",
+    "version": "1.0.0",
+    "description": "Test driver",
+    "main": "main.js",
+    "homepage": "http://",
+    "author": {
+        "name": "Janiel",
+        "email": "janiel.nucont@gmail.com"
+    },
+    "build": {
+        "appId": "com.nucont.app-driver",
+        "productName": "nucont-app-drive",
+        "directories": {
+            "output": "./build"
+        },
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ],
+            "publisherName": "Janiel",
+            "icon": "./assets/icons/icon-base.png"
+        },
+        "mac": {
+            "category": "nucont.app-driver.utils.web",
+            "target": "default",
+            "darkModeSupport": false
+        },
+        "linux": {
+            "target": "tar.gz",
+            "maintainer": "Janiel",
+            "vendor": "Janiel",
+            "description": "Janiel",
+            "category": "Utility"
+        }
+    },
+    "scripts": {
+        "start": "electron main.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "electron-builder"
+    },
+    "dependencies": {
+        "bootstrap": "^4.3.1",
+        "node-sybase-nu": "^1.1.7",
+        "sqlanywhere": "^1.0.24"
+    },
+    "devDependencies": {
+        "electron": "^6.0.3",
+        "electron-builder": "^21.2.0"
+    },
+    "repository": "https://github.com/janiel14/nucont-app-drive.git"
+}
