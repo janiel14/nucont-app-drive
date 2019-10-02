@@ -5,6 +5,7 @@ const validate = () => {
         database = document.getElementById("database").value,
         username = document.getElementById("username").value,
         password = document.getElementById("password").value,
+        query = document.getElementById("query").value,
         display = document.getElementById("display");
 
     if (driver == 0) {
@@ -31,6 +32,10 @@ const validate = () => {
         display.innerHTML = "informe a password!!!!";
         return false;
     }
+    if (query.length == 0) {
+        display.innerHTML = "informe a query!!!!";
+        return false;
+    }
 
     return true;
 };
@@ -43,6 +48,7 @@ const testDriver = () => {
             database = document.getElementById("database").value,
             username = document.getElementById("username").value,
             password = document.getElementById("password").value,
+            query = document.getElementById("query").value,
             display = document.getElementById("display");
 
         if (!validate()) {
@@ -70,9 +76,7 @@ const testDriver = () => {
 
         if (conn) {
             display.innerHTML = "awaiting...";
-            conn.query(
-                "SELECT TOP 1 START AT 1 ramo_emp, razao_emp, nome_emp FROM bethadba.geempre"
-            )
+            conn.query(query)
                 .then((result) => {
                     display.innerHTML = JSON.stringify(result);
                 })

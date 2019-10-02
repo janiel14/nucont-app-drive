@@ -12,11 +12,6 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
         />
-        <script
-            src="node_modules/bootstrap/dist/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"
-        ></script>
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid">
@@ -41,7 +36,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="hostname">hostname</label>
+                            <label for="hostname">hostname:</label>
                             <input
                                 type="text"
                                 class="form-control"
@@ -51,7 +46,7 @@
                             />
                         </div>
                         <div class="form-group">
-                            <label for="port">Port</label>
+                            <label for="port">Port:</label>
                             <input
                                 type="number"
                                 class="form-control"
@@ -61,7 +56,7 @@
                             />
                         </div>
                         <div class="form-group">
-                            <label for="database">database</label>
+                            <label for="database">database:</label>
                             <input
                                 type="text"
                                 class="form-control"
@@ -71,7 +66,7 @@
                             />
                         </div>
                         <div class="form-group">
-                            <label for="username">username</label>
+                            <label for="username">username:</label>
                             <input
                                 type="text"
                                 class="form-control"
@@ -81,13 +76,19 @@
                             />
                         </div>
                         <div class="form-group">
-                            <label for="password">password</label>
+                            <label for="password">password:</label>
                             <input
                                 type="password"
                                 class="form-control"
                                 id="password"
                                 placeholder="password"
                             />
+                        </div>
+                        <div class="form-group">
+                            <label for="query">Query:</label>
+                            <textarea class="form-control" id="query">
+SELECT TOP 1 START AT 1 ramo_emp, razao_emp, nome_emp FROM bethadba.geempre
+                            </textarea>
                         </div>
                     </form>
                     <button
