@@ -47,11 +47,11 @@
     },
     "dependencies": {
         "bootstrap": "^4.3.1",
-        "node-sybase-nu": "^1.1.7",
+        "node-sybase-nu": "=1.1.2",
         "sqlanywhere": "^1.0.24"
     },
     "devDependencies": {
-        "electron": "^6.0.3",
+        "electron": "=4",
         "electron-builder": "^21.2.0"
     },
     "repository": "https://github.com/janiel14/nucont-app-drive.git"
