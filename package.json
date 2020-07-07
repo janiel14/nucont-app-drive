@@ -51,7 +51,7 @@
         "sqlanywhere": "^1.0.24"
     },
     "devDependencies": {
-        "electron": "=4",
+        "electron": "=7",
         "electron-builder": "^21.2.0"
     },
     "repository": "https://github.com/janiel14/nucont-app-drive.git"
